@@ -9,6 +9,7 @@ module org.example.tiedafx {
     requires com.google.gson;
     requires org.hibernate.orm.core;
     requires jakarta.persistence;
+    requires java.naming;
 
 
     opens org.example.tiedafx to javafx.fxml, org.hibernate.orm.core, jakarta.persistence;
