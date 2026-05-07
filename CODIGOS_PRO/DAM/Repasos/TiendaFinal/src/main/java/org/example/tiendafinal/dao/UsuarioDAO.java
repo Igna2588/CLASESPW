@@ -1,6 +1,7 @@
 package org.example.tiendafinal.dao;
 
 import org.example.tiendafinal.database.DBConnection;
+import org.example.tiendafinal.model.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,5 +37,26 @@ public class UsuarioDAO {
         }
 
         return datos;
+    }
+    public Usuario getUsuarioById(int id){
+        Usuario usuario = null;
+        String query = String.format("SELECT * FROM %s WHERE %s = ?", "usuarios", "id");
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,id);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String nombre = resultSet.getString("nombre");
+                String correo = resultSet.getString("correo");
+                String pass = resultSet.getString("pass");
+                int salario = resultSet.getInt("salario");
+                int perfil = resultSet.getInt("id_perfil");
+                usuario = new Usuario(nombre, correo, salario,perfil);
+            }
+            return usuario;
+        } catch (SQLException e) {
+            System.out.println("Error en la base de datos");
+            return usuario;
+        }
     }
 }

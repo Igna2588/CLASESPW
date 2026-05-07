@@ -1,5 +1,6 @@
 package org.example.tiedafx.dao;
 
+import javafx.scene.Scene;
 import org.example.tiedafx.database.DBConnection;
 import org.example.tiedafx.database.DBSchem;
 import org.example.tiedafx.model.User;
@@ -8,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
 
@@ -72,7 +75,6 @@ public class UserDAO {
     }
 
     public void addUser(User user) throws SQLException {
-
         String query = String.format("INSERT INTO %s (%s,%s,%s,%s,%s) VALUES (?,?,?,?,?)",
                 DBSchem.TAB_CLIENT,
                 DBSchem.COL_NAME, DBSchem.COL_MAIL, DBSchem.COL_PASS, DBSchem.COL_CASH, DBSchem.COL_PROFILE);
@@ -83,5 +85,52 @@ public class UserDAO {
         preparedStatement.setInt(4, user.getCash());
         preparedStatement.setInt(5, user.getIdProfile());
         preparedStatement.execute();
+    }
+    public void buyProduct(long idClient, long idProduct){
+        String query = String.format("INSERT INTO %s (%s, %s) VALUES (?,?)",
+                DBSchem.TAB_SHOP,DBSchem.COL_ID_USER, DBSchem.COL_ID_PRODUCT);
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setLong(2,idProduct);
+            preparedStatement.setLong(1,idClient);
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            System.out.println("Error en la query");
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public int clearShop(long id){
+        String query = String.format("DELETE FROM %s WHERE %s = ?", DBSchem.TAB_SHOP, DBSchem.COL_ID_USER);
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setLong(1, id);
+            return preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error en la query");
+        }
+        return 0;
+    }
+
+    public List<Long> getClientProducts(long id){
+        List<Long> listaProductos = new ArrayList<>();
+        String query = String.format("SELECT * FROM %s WHERE %s = ?", DBSchem.TAB_SHOP, DBSchem.COL_ID_USER);
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setLong(1,id);
+            resultSet =  preparedStatement.executeQuery();
+            while (resultSet.next()){
+                listaProductos.add(resultSet.getLong(DBSchem.COL_ID_PRODUCT));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la query");
+            System.out.println(e.getMessage());
+        }
+        return listaProductos;
+
+
     }
 }
