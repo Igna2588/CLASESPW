@@ -1,0 +1,12 @@
+Concepto de programacion JAVA -> estructura / instalaciones: JDK, JVM, JRE, IDE, Compilador
+Estructura de programa -> MVC
+Definicion de variables
+Definicion de tipos de datos
+Estructuras de control -> datos que admiten
+Estructuras de datos -> diferencias entre ArrayList HashMap Array
+Conceptos de POO -> encapsulacion, herencia, polimorfismo
+Funciones stream (bi function) -> comprender que hace cada una
+Excepciones -> que son, bloque de gestion y como controlarlas
+JSON -> entender que es y para que vale. Como se extre informacion
+Flujos -> Flujos I/O
+Recursividad -> concepto y para que sirve
