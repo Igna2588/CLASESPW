@@ -1,0 +1,164 @@
+JAVA -> Compilador JDK (librerias + compilador) + IDE (intellij + eclipse + netbeans)
+
+MVC --> paquetes
+	Model -> clases que seran objetos
+	View -> clases que hacen referencia a lo que el usuario / sistema interactua
+	Controller -> clase que aplica la logica del negocio
+
+
+Operadores: aquellos que permiten gestionar variables o codigo dentro del programa
+	aritmeticos
+	asignacion
+	comparacion: >, <, <=, >=, !=, ==, equals() (logica, cuando queremos comparar dos elementos no primitivos, utilizamos X.equal(X))
+	logicos AND OR
+
+
+Estructuras de control
+	salto -> if (boolean) 
+		
+		switch(valor) {
+			case X:
+				variable
+				scope
+			
+			case X:
+				scope
+			
+			default:
+				scope
+
+		}
+		Si no se pone un breack en cada caso, se produce un salto al siguiente
+
+
+		switch(valor) {
+			case X -> {
+				variable;
+				scope;
+			}
+			case X -> {
+				
+			}
+		}
+
+	repeticion
+		for (iterar desde un inicio a un final) -> recorrer y modificar
+		foreach (iterar) -> recorrer una coleccion QUE SEA ITERABLE
+		while (condiciones boolean) -> evalua y ejecuta
+		dowhile (condiciones boolean) -> ejecutar y evalua
+
+Colecciones de datos
+
+	Array -> estaticos, indexados. El primer elemento en posicion 0
+		elementos[x] = 
+		int[] numeros = new int[4] -> length -> 4 [0,0,0,0]
+	ArrayList -> dinamicos, indexados. El primer elemento en posicion 0
+		.add()
+		.remove() -> tanto la posicion como el elemento. Mucho cuidado si los elementos son Integer
+		.get()
+		.set()
+
+		7 elementos 
+			elementos.get(7) -> fuera del tamaño
+			elementos[7] -> fuera del tamaño
+
+	HashMap<Key,Value> -> dinamico, no indexado
+		get(key) -> me das el elemento que esta con la clave
+		values() -> conjunto de elementos -> iterable
+		keys() -> conjunto de claves -> iterable
+
+Funciones especiales
+	
+	lambda
+	stream -> funciones que permiten recorrer (alterar, modificar, etc..) elementos de uno en uno de colecciones
+		Coleccion.stream.foreach(element -> )
+		Coleccion.stream.map(element -> )
+		Coleccion.stream.filter(element -> ).collect(toList)
+
+		for (int dato: coleccion){
+			if (dato%2==0){
+				par++
+			}
+		}
+
+
+
+POO - Herencia - Una clase donde se capturan elementos de clases superiores
+	
+	una clase solo puede heredar de una clase al mismo tiempo
+	una clase puede implementar tantas interfaces como se necesite
+
+	Clases -> class MiClase extends ClaseA implements InterfazA,InterfazB {}
+		constructores -> metodos que permiten crear el objeto, tantos como quisiesemos, minimo uno, donde el vacio es el por defecto (enmascarado si escribimos otro diferente)
+		metodos -> darle funcionalidad al "futuro" objeto. Encapasula el funcionamiento del objeto
+		propiedades / atributos
+			
+			final static public/protected/private (necesidad absoluta de crear getter / setter)
+				dependiendo del tipo: String, int, double, boolean
+					primitivas: solo se guarda el valor
+					complejas: se guarda el valor y funcionalidad
+
+					int n = 9
+					Integener n1 = n
+
+			static -> el elemento no pertenece al futuro objeto, lo hace a la clase. Es peligroso porquhace una referencia global a todo aquel que quiera acceder al elemento
+				class Entrada{
+					public static void main (String[] args){
+						// acceso estatico porque el compilador tiene que ejercutarlo directamente
+					}				
+				}
+
+				class MiClase{
+					public static void metodo (){
+						// acceso estatico porque el compilador tiene que ejercutarlo directamente
+					}				
+				}
+
+				MiClase clase = new MiClase()
+				clase.metodo()
+				MiClase.metodo()
+
+
+				Entrada.main()
+				Entrada entrada = new Entrada()
+				entrada.main()
+
+
+
+		las clases se utilizan para poder crear objetos class Coche {} -> Coche c1 = new Coche() Coche c1 = new Coche() Coche c2 = new Coche() -> memoria
+
+	Interfaces -> 	metodos abs (solo la firma) a no se que tenga un metodo default (static)
+					constantes
+	Enums 		-> 	tipos fijos, donde se crean "objetos" precargados, no se pueden crear tipos adicionales. Porque los constructores son privados
+
+Excepciones -> Contolan los posibles fallos. En java algunas las excepciones son de obligada captura
+	try-catch gestiona el error cuando y donde se produce
+	throws le pasa la responsabilidad al metodo
+	throw -> lanzamiento con new
+	Exceptions -> las genericas. Si extendemos de exception
+
+
+
+try{
+	
+	codigo 
+	codigo fallo3
+	try{
+		try{
+
+		} 
+		catch()
+		{
+	
+		}
+	} 
+	catch()
+	{
+
+	}
+}
+catch1{}
+catch2{}
+catch3{}
+
+finally

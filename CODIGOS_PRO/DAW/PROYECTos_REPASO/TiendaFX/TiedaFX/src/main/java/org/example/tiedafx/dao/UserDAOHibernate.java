@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 public class UserDAOHibernate {
@@ -42,6 +44,10 @@ public class UserDAOHibernate {
 
     public void getUser(int id) {
         try {
+
+
+
+
             // 1 abre la sesion
             session = sessionFactory.openSession();
             // 2 crea una transaccion
