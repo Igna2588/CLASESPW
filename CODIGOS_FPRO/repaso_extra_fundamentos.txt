@@ -93,7 +93,7 @@ POO - Herencia - Una clase donde se capturan elementos de clases superiores
 		metodos -> darle funcionalidad al "futuro" objeto. Encapasula el funcionamiento del objeto
 		propiedades / atributos
 			
-			final static public/protected/private (necesidad absoluta de crear getter / setter)
+			final static  public/protected/private (necesidad absoluta de crear getter / setter)
 				dependiendo del tipo: String, int, double, boolean
 					primitivas: solo se guarda el valor
 					complejas: se guarda el valor y funcionalidad

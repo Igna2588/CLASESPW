@@ -20,6 +20,16 @@ public class TiendaApplication extends Application {
         stage.show();
 
 
+        if(true){
+            if (true)
+                System.out.println("asdasd");
+            else
+                System.out.println("asasd");
+        }
+        else
+            System.out.println("asasd");
+
+
     }
 
     public static void main(String[] args) {
